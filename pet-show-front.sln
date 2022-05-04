@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pet-show-front.Android", "pet-show-front\pet-show-front.Android\pet-show-front.Android.csproj", "{A810D3D6-E4EB-4F70-95DB-AC8A70C462AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pet-show-front", "pet-show-front\pet-show-front\pet-show-front.csproj", "{6641C168-76CB-49C5-880F-5B996ACCAF33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pet-show-front", "pet-show-front\pet-show-front\pet-show-front.csproj", "{6641C168-76CB-49C5-880F-5B996ACCAF33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

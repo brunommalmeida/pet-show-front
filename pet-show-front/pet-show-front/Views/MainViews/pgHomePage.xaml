@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:pgBasePage
+    x:Class="pet_show_front.Views.MainViews.pgHomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+            <Label
+                HorizontalOptions="Start"
+                Text="Adimax Produção"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="23"
+                        Phone="19"
+                        Tablet="22" />
+                </Label.FontSize>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Versao_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label
+                x:Name="lblUsuario"
+                HorizontalOptions="EndAndExpand"
+                Text="Usuário"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="23"
+                        Phone="19"
+                        Tablet="22" />
+                </Label.FontSize>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="UsuarioLabel_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Image
+                x:Name="imgSair"
+                Margin="0,0,5,0"
+                Aspect="AspectFit"
+                HorizontalOptions="End"
+                Source="sair.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Sair_Tapped" />
+                </Image.GestureRecognizers>
+                <Image.HeightRequest>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="39"
+                        Phone="29"
+                        Tablet="39" />
+                </Image.HeightRequest>
+                <Image.WidthRequest>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="39"
+                        Phone="29"
+                        Tablet="39" />
+                </Image.WidthRequest>
+            </Image>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout
+                x:Name="stkLoading"
+                HorizontalOptions="Center"
+                IsVisible="False"
+                VerticalOptions="Center">
+                <StackLayout.Orientation>
+                    <OnPlatform x:TypeArguments="StackOrientation">
+                        <On Platform="UWP" Value="Vertical" />
+                        <On Platform="Android" Value="Horizontal" />
+                    </OnPlatform>
+                </StackLayout.Orientation>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="carregando menus..."
+                    TextColor="Black"
+                    VerticalOptions="Center">
+                    <Label.FontSize>
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Desktop="23"
+                            Phone="20"
+                            Tablet="21" />
+                    </Label.FontSize>
+                </Label>
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsEnabled="True"
+                    IsRunning="True"
+                    VerticalOptions="Center"
+                    Color="Black" />
+            </StackLayout>
+            <ScrollView>
+                <FlexLayout
+                    x:Name="stkMenu"
+                    Grid.Row="0"
+                    Margin="8,8,8,8"
+                    AlignContent="Start"
+                    AlignItems="Center"
+                    Direction="Row"
+                    HorizontalOptions="CenterAndExpand"
+                    JustifyContent="Center"
+                    Wrap="Wrap" />
+            </ScrollView>
+            <StackLayout
+                x:Name="stkLogo"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="EndAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <BoxView
+                        Margin="0,5,-8,0"
+                        HorizontalOptions="FillAndExpand"
+                        Color="Black">
+                        <BoxView.HeightRequest>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="6"
+                                Phone="3.5"
+                                Tablet="5.5" />
+                        </BoxView.HeightRequest>
+                    </BoxView>
+                    <BoxView
+                        Margin="0,0,-5,5"
+                        HorizontalOptions="FillAndExpand"
+                        Color="Black">
+                        <BoxView.HeightRequest>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="6"
+                                Phone="3.5"
+                                Tablet="5.5" />
+                        </BoxView.HeightRequest>
+                    </BoxView>
+                </StackLayout>
+                <Image
+                    x:Name="imgLogo"
+                    Margin="0,0,5,0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="End"
+                    Source="logoHomePage.png">
+                    <Image.WidthRequest>
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Desktop="175"
+                            Phone="135"
+                            Tablet="165" />
+                    </Image.WidthRequest>
+                    <Image.HeightRequest>
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Desktop="165"
+                            Phone="125"
+                            Tablet="155" />
+                    </Image.HeightRequest>
+                </Image>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</custom:pgBasePage>

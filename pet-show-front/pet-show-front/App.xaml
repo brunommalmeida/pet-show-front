@@ -3,6 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="pet_show_front.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="backgroundColorGray">#d6d6d6</Color>
+            <Color x:Key="backgroundColorGrayDark">#5e5e5e</Color>
 
+            <Color x:Key="gradienteInicial">#ffb17d</Color>
+            <Color x:Key="gradienteFinal">#ff8a3d</Color>
+            <Color x:Key="gradienteInicialDark">#5e5e5e</Color>
+            <Color x:Key="gradienteFinalDark">#030303</Color>
+
+            <Color x:Key="Verde">#2cc971</Color>
+            <Color x:Key="Azul">#2d92eb</Color>
+            <Color x:Key="Vermelho">#eb4034</Color>
+            <Color x:Key="VerdeEsmaecido">#89f5b8</Color>
+            <Color x:Key="Cinza">#949999</Color>
+
+            <Color x:Key="focusedColor">#c76802</Color>
+            <Color x:Key="focusedColorDark">White</Color>
+
+            <Color x:Key="textBackgroundColor">White</Color>
+            <Color x:Key="textBackgroundColorDark">Black</Color>
+
+            <Color x:Key="frameBackgroundColor">White</Color>
+            <Color x:Key="frameBackgroundColorDark">#d6d6d6</Color>
+
+            <Color x:Key="labelTextColor">#808080</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Default={StaticResource gradienteInicial}, Light={StaticResource gradienteInicial}, Dark={StaticResource gradienteInicialDark}}" />
+                <Setter Property="BarTextColor" Value="Black" />
+            </Style>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource frameBackgroundColor}, Light={StaticResource frameBackgroundColor}, Dark={StaticResource frameBackgroundColorDark}}" />
+            </Style>
+            <Style TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="{AppThemeBinding Dark=White, Light=Black, Default=Black}" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String"
+                            Android="verdana.ttf#verdana"
+                            Default="verdana.ttf#verdana"
+                            WinPhone="/Assets/Fonts/verdana.ttf#verdana" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="TextColor" Value="{StaticResource labelTextColor}" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String"
+                            Android="verdana.ttf#verdana"
+                            Default="verdana.ttf#verdana"
+                            WinPhone="/Assets/Fonts/verdana.ttf#verdana" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light=Black, Dark=White, Default=White}" />
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="FontFamily" Value="verdana.ttf#verdana" />
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="FontFamily" Value="verdana.ttf#verdana" />
+            </Style>
+            <Style TargetType="TimePicker">
+                <Setter Property="FontFamily" Value="verdana.ttf#verdana" />
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="FontFamily" Value="verdana.ttf#verdana" />
+            </Style>
+
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
