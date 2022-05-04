@@ -172,18 +172,6 @@ namespace pet_show_front.Views.MainViews
 
         }
 
-        private void Versao_Tapped(object sender, EventArgs e)
-        {
-            try
-            {
-                DisplayAlert("Adimax Produção App", $"Versão: {VersionTracking.CurrentVersion} \nBuild: {VersionTracking.CurrentBuild}", "Ok");
-            }
-            catch (Exception ex)
-            {
-                DisplayAlert("Erro", "Erro ao verificar versão: " + ex.Message, "ok");
-            }
-        }
-
         private async void Sair_Tapped(object sender, EventArgs e)
         {
             try

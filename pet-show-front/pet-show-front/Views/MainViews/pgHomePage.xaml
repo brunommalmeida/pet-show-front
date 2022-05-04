@@ -8,7 +8,7 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="Center">
             <Label
                 HorizontalOptions="Start"
-                Text="Adimax Produção"
+                Text="Pet Show"
                 TextColor="Black">
                 <Label.FontSize>
                     <OnIdiom
@@ -17,9 +17,6 @@
                         Phone="19"
                         Tablet="22" />
                 </Label.FontSize>
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Versao_Tapped" />
-                </Label.GestureRecognizers>
             </Label>
             <Label
                 x:Name="lblUsuario"
