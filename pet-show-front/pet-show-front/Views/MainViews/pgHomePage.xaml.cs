@@ -18,25 +18,16 @@ namespace pet_show_front.Views.MainViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class pgHomePage : pgBasePage
     {
-        bool AtualizarUsuario = false;
-        bool AtualizarFuncoes = false;
         bool CarregouPage = false;
         public pgHomePage(bool atualizaUsuario, bool atualizaFuncoes)
         {
             InitializeComponent();
 
-            AtualizarUsuario = atualizaUsuario;
-            AtualizarFuncoes = atualizaFuncoes;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-            if (await AppPrecisaPermissoes())
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new pgSolicitarPermissoes());
-            }
 
             if (!CarregouPage)
             {
@@ -45,32 +36,6 @@ namespace pet_show_front.Views.MainViews
             }
 
         }
-
-
-        public static async Task<bool> AppPrecisaPermissoes()
-        {
-            try
-            {
-                if (App.ServicoConfiguracaoApp.GetAndroidVersion() < 23)
-                {
-                    return false;
-                }
-
-                var permissaoCamera = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-
-                if (permissaoCamera != Plugin.Permissions.Abstractions.PermissionStatus.Granted)
-                {
-                    return true;
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
 
         private void ExibeLoading(bool exibir)
         {

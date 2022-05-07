@@ -60,6 +60,7 @@
                         <custom:CustomEntry
                             x:Name="txtUsuario"
                             Placeholder="Usuário"
+                            Text="{Binding LoginUsuario}"
                             HorizontalTextAlignment="Center"
                             TextColor="Black">
 
@@ -67,6 +68,7 @@
                         <custom:CustomEntry
                             x:Name="txtSenha"
                             Placeholder="Senha"
+                            Text="{Binding Senha}"
                             HorizontalTextAlignment="Center"
                             TextColor="Black"
                             IsPassword="True">
