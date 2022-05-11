@@ -99,6 +99,27 @@
                             IsRunning="True"
                             IsVisible="{Binding IsBusy}"
                             Color="Black" />
+                        <Label
+                            x:Name="lblConfiguracoes"
+                            Margin="0,5,0,0"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                            Text="Configurações"
+                            TextColor="{AppThemeBinding Light=Black,
+                                                        Dark=White,
+                                                        Default=Black}"
+                            VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="18"
+                                    Phone="18"
+                                    Tablet="22" />
+                            </Label.FontSize>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConfiguracoesCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                 </Frame.Content>
             </Frame>

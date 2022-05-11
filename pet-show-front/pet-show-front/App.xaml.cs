@@ -14,7 +14,9 @@ namespace pet_show_front
     public partial class App : Application
     {
         public static Usuario Usuario { get; set; }
+        public static Configuracao Configuracao { get; set; }
         public static SQLiteConnection ConexaoSqlite { get; set; }
+        
         public static IServicoConfiguracaoApp ServicoConfiguracaoApp { get; set; }
         public App()
         {
@@ -78,6 +80,7 @@ namespace pet_show_front
                 }
 
                 ConexaoSqlite.CreateTable<Usuario>();
+                ConexaoSqlite.CreateTable<Configuracao>();
 
             }
             catch (Exception ex)

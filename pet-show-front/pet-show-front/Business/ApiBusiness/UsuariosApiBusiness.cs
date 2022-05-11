@@ -17,11 +17,13 @@ namespace pet_show_front.Business.ApiBusiness
             {
                 //using(CustomHttpClient client = new CustomHttpClient())
                 //{
-                    usuario.Id = 1;
-                    usuario.Nome = "Bruno";
-                    usuario.UsuarioLogin = "bruno";
-                    usuario.Senha = "12345";
-                    usuario.AcessoAdministrador = false;
+                usuario.Id = 1;
+                usuario.Nome = "Bruno";
+                usuario.UsuarioLogin = "bruno";
+                usuario.Senha = "12345";
+                usuario.AcessoAdministrador = false;
+                
+                
 
                     //var response = await client.PostWithTokenAsync($"api/usuarios/login", usuario.GetStringContentSerialized());
                     //if(response.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -37,17 +39,17 @@ namespace pet_show_front.Business.ApiBusiness
                     //{
                     //    var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
 
-                    //    if (erro != null && !string.IsNullOrEmpty(erro.Message))
-                    //    {
-                    //        throw new Exception($"Erro ao buscar usuário: Mensagem: {erro.Message}  Trace:{erro.Trace}");
-                    //    }
-                    //    else
-                    //    {
-                    //        throw new Exception($"Erro ao buscar usuário: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
-                    //    }
-                    //}
+                //    if (erro != null && !string.IsNullOrEmpty(erro.Message))
+                //    {
+                //        throw new Exception($"Erro ao buscar usuário: Mensagem: {erro.Message}  Trace:{erro.Trace}");
+                //    }
+                //    else
+                //    {
+                //        throw new Exception($"Erro ao buscar usuário: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
+                //    }
+                //}
 
-                    return usuario;
+                return usuario;
 
                 //}
             }

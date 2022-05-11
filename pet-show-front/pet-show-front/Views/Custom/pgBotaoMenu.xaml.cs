@@ -1,6 +1,8 @@
 ﻿using pet_show_front.Business.AppBusiness;
 using pet_show_front.Models.MainModels;
+using pet_show_front.Views.Checklists;
 using pet_show_front.Views.MainViews;
+using pet_show_front.Views.Romaneios;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +41,20 @@ namespace pet_show_front.Views.Custom
 
                 clicou = false;
 
+                if (Menu.Opcao == 1)
+                {
+                    await Navigation.PushAsync(new Views.Romaneios.pgListaRomaneios());
+                }
+                else if (Menu.Opcao == 2)
+                {
+                    await Navigation.PushAsync(new pgChecklists());
+
+                }
+                else if (Menu.Opcao == 99)
+                {
+                    await Navigation.PushAsync(new pgConfiguracoes());
+                }
+                clicou = false;
             }
             catch (Exception ex)
             {

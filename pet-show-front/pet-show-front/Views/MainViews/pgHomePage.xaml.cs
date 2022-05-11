@@ -75,8 +75,8 @@ namespace pet_show_front.Views.MainViews
                 stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
                 {
                     Opcao = 1,
-                    Descricao = "Produção",
-                    Icone = "checklistProduct.png",
+                    Descricao = "Romaneios",
+                    Icone = "delivery_truck.png",
                     IdFuncao = 1
 
                 }));
@@ -84,26 +84,9 @@ namespace pet_show_front.Views.MainViews
                 stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
                 {
                     Opcao = 2,
-                    Descricao = "Separação",
-                    Icone = "agruparcarga.png",
-                    IdFuncao = 2
-
-                }));
-
-                stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
-                {
-                    Opcao = 3,
-                    Descricao = "Etiquetas",
-                    Icone = "printer_new.png",
-                    IdFuncao = 3
-                }));
-
-                stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
-                {
-                    Opcao = 4,
-                    Descricao = "Transferências",
-                    Icone = "exchange.png",
-                    IdFuncao = 4
+                    Descricao = "Checklists",
+                    Icone = "checklist.png",
+                    IdFuncao = 1
 
                 }));
 
@@ -111,7 +94,7 @@ namespace pet_show_front.Views.MainViews
                 {
                     Opcao = 99,
                     Descricao = "Configurações",
-                    Icone = "configuracoes.png"
+                    Icone = "setting.png"
 
                 }));
             }

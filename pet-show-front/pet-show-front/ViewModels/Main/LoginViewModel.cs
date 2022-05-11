@@ -16,6 +16,7 @@ namespace pet_show_front.ViewModels.Main
     {
 
         public ICommand LoginCommand { get; private set; }
+        public ICommand ConfiguracoesCommand { get; private set; }
 
         string loginUsuario = string.Empty;
         string senha = string.Empty;
@@ -43,6 +44,11 @@ namespace pet_show_front.ViewModels.Main
         public LoginViewModel()
         {
             LoginCommand = new Command(Login);
+            ConfiguracoesCommand = new Command(Configuracoes);
+        }
+        private async void Configuracoes()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new pgConfiguracoes());
         }
 
         private bool ValidaCampos()
