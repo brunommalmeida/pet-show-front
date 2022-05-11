@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="pet_show_front.Views.Custom.pgBotaoMenu"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
+        <Frame
+            x:Name="frmBotao"
+            Margin="12,12,12,12"
+            Padding="9"
+            BackgroundColor="White"
+            CornerRadius="7"
+            HasShadow="True">
+            <Frame.WidthRequest>
+                <OnIdiom
+                    x:TypeArguments="x:Double"
+                    Desktop="145"
+                    Phone="120"
+                    Tablet="159" />
+            </Frame.WidthRequest>
+            <Frame.HeightRequest>
+                <OnIdiom
+                    x:TypeArguments="x:Double"
+                    Desktop="120"
+                    Phone="94"
+                    Tablet="120" />
+            </Frame.HeightRequest>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Menu_Tapped" />
+            </Frame.GestureRecognizers>
+            <Frame.Content>
+                <Grid VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image
+                        x:Name="icone"
+                        Grid.Row="0"
+                        Margin="0,0,0,7"
+                        Aspect="AspectFit"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image.WidthRequest>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="45"
+                                Phone="38"
+                                Tablet="48" />
+                        </Image.WidthRequest>
+                        <Image.HeightRequest>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="45"
+                                Phone="38"
+                                Tablet="48" />
+                        </Image.HeightRequest>
+                    </Image>
+                    <Label
+                        x:Name="lblMenu"
+                        Grid.Row="1"
+                        HorizontalOptions="Center"
+                        LineBreakMode="WordWrap"
+                        LineHeight="1.2"
+                        TextColor="Black"
+                        VerticalOptions="End">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="20"
+                                Phone="16"
+                                Tablet="20" />
+                        </Label.FontSize>
+                    </Label>
+                </Grid>
+            </Frame.Content>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

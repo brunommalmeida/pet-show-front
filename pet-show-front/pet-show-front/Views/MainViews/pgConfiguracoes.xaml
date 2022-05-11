@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:pgBasePage
+    x:Class="pet_show_front.Views.MainViews.pgConfiguracoes"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Main"
+    xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:converters="clr-namespace:pet_show_front.Converters"
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom"
+>
+    <ContentPage.BindingContext>
+        <VM:ConfiguracoesViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IntToStringConverter x:Key="intToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label
+                HorizontalOptions="Start"
+                Text="Configurações"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="23"
+                        Phone="19"
+                        Tablet="22" />
+                </Label.FontSize>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ScrollView VerticalOptions="FillAndExpand">
+        <Frame
+            Margin="12,12,12,12"
+            BackgroundColor="White"
+            CornerRadius="7"
+            HasShadow="True"
+            VerticalOptions="Start">
+            <Frame.Content>
+                <StackLayout>
+                    <Label
+                        Text="URL API"
+                        TextColor="Gray">
+                       
+                    </Label>
+                    <Entry
+                        Margin="0,5,0,10"
+                        HorizontalTextAlignment="Start"
+                        Text="{Binding Configuracao.UrlApi}"
+                        TextColor="Black">
+                        <Entry.FontSize>
+                            <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="23"
+                                    Phone="19"
+                                    Tablet="22" />
+                        </Entry.FontSize>
+                    </Entry>
+
+                    <custom:CustomButton
+                        x:Name="btnSalvar"
+                        Margin="0,15,0,0"
+                        BackgroundColor="{StaticResource Verde}"
+                        Command="{Binding SalvarCommand}"
+                        CornerRadius="7"
+                        Text="Salvar"
+                        TextColor="White">
+                        <custom:CustomButton.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="18"
+                                Tablet="21" />
+                        </custom:CustomButton.FontSize>
+                    </custom:CustomButton>
+                </StackLayout>
+            </Frame.Content>
+        </Frame>
+    </ScrollView>
+
+</custom:pgBasePage>

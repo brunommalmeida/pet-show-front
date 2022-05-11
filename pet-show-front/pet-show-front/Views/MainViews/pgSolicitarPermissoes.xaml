@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="pet_show_front.Views.MainViews.pgSolicitarPermissoes"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Permissões App"
+    NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="stkPage" VerticalOptions="CenterAndExpand">
+                <Label
+                    x:Name="lblInfo"
+                    Margin="20"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="O aplicativo precisa de permissões de câmera"
+                    VerticalOptions="CenterAndExpand" />
+                <Button
+                    x:Name="btnGravarPermissoes"
+                    Clicked="BtnGravarPermissoes_Clicked"
+                    HorizontalOptions="Center"
+                    Text="Continuar"
+                    VerticalOptions="Center" />
+
+            </StackLayout>
+            <StackLayout x:Name="stkIndicator" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

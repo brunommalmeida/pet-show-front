@@ -61,8 +61,12 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServicoConfiguracaoApp.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\MontserratItalic.ttf" />
+    <AndroidAsset Include="Assets\verdana.ttf" />
+    <AndroidAsset Include="Assets\verdanab.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -84,13 +88,22 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\delivery_truck.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\pet-show-front\pet-show-front.csproj">
-      <Project>{BCE3FF64-BB2B-4DDB-AC72-3061E102AB8C}</Project>
+      <Project>{6641C168-76CB-49C5-880F-5B996ACCAF33}</Project>
       <Name>pet-show-front</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\truck_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checklist.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

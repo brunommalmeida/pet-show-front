@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:pgBasePage
+    x:Class="pet_show_front.Views.MainViews.pgLogin"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Main"
+    xmlns:converters="clr-namespace:pet_show_front.Converters"
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom"    
+    NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <VM:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid VerticalOptions="CenterAndExpand">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Image
+            x:Name="imgLogo"
+            Grid.Row="0"
+            Aspect="AspectFit"
+            HorizontalOptions="Center"
+            Source="truck_logo.png" />
+        <Label
+            Grid.Row="1"
+            Margin="0,0,0,0"
+            FontFamily="MontserratItalic.ttf#MontserratItalic"
+            HorizontalOptions="Center"
+            Text="PetShow"
+            TextColor="{AppThemeBinding Light=Black,
+                                        Default=Black,
+                                        Dark=White}">
+            <Label.FontSize>
+                <OnIdiom
+                    x:TypeArguments="x:Double"
+                    Desktop="48"
+                    Phone="31"
+                    Tablet="35" />
+            </Label.FontSize>
+        </Label>
+        <StackLayout Grid.Row="2">
+            <Frame
+                Margin="25,-20,25,2"
+                BackgroundColor="{AppThemeBinding Light={StaticResource frameBackgroundColor},
+                                                  Dark={AppThemeBinding Dark={StaticResource frameBackgroundColorDark}},
+                                                  Default={StaticResource frameBackgroundColor}}"
+                CornerRadius="8"
+                HasShadow="True">
+                <Frame.Content>
+                    <StackLayout>
+                        <custom:CustomEntry
+                            x:Name="txtUsuario"
+                            Placeholder="Usuário"
+                            Text="{Binding LoginUsuario}"
+                            HorizontalTextAlignment="Center"
+                            TextColor="Black">
+
+                        </custom:CustomEntry>
+                        <custom:CustomEntry
+                            x:Name="txtSenha"
+                            Placeholder="Senha"
+                            Text="{Binding Senha}"
+                            HorizontalTextAlignment="Center"
+                            TextColor="Black"
+                            IsPassword="True">
+                        </custom:CustomEntry>
+                        <custom:CustomButton
+                            x:Name="btnLogin"
+                            Margin="0,0,0,0"
+                            BackgroundColor="{StaticResource Verde}"
+                            Command="{Binding LoginCommand}"
+                            CornerRadius="7"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                            Text="Entrar"
+                            TextColor="White"
+                            VerticalOptions="Center">
+                            <custom:CustomButton.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="23"
+                                    Phone="18"
+                                    Tablet="22" />
+                            </custom:CustomButton.FontSize>
+                        </custom:CustomButton>
+
+                        <ActivityIndicator
+                            x:Name="aiLoading"
+                            IsEnabled="True"
+                            IsRunning="True"
+                            IsVisible="{Binding IsBusy}"
+                            Color="Black" />
+                        <Label
+                            x:Name="lblConfiguracoes"
+                            Margin="0,5,0,0"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                            Text="Configurações"
+                            TextColor="{AppThemeBinding Light=Black,
+                                                        Dark=White,
+                                                        Default=Black}"
+                            VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="18"
+                                    Phone="18"
+                                    Tablet="22" />
+                            </Label.FontSize>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConfiguracoesCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+
+        </StackLayout>
+    </Grid>
+
+</custom:pgBasePage>
