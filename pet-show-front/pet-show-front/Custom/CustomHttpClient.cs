@@ -15,7 +15,7 @@ namespace pet_show_front.Custom
         public TokenApi TokenAPi { get; set; }
         public CustomHttpClient() 
         {
-            BaseAddress = new Uri("google.com");
+            BaseAddress = new Uri(App.Configuracao.UrlApi);
             Timeout = TimeSpan.FromSeconds(60);            
         }
 

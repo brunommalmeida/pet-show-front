@@ -6,7 +6,7 @@
     xmlns:VM="clr-namespace:pet_show_front.ViewModels.Romaneios"
     xmlns:converters="clr-namespace:pet_show_front.Converters"
     xmlns:custom="clr-namespace:pet_show_front.Views.Custom"
-    x:Name="pgListaOp">
+    x:Name="pgListaRom">
     <ContentPage.BindingContext>
         <VM:ListaRomaneiosViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
@@ -19,7 +19,7 @@
         <StackLayout>
             <Label
                 HorizontalOptions="Start"
-                Text="Ordens de Produção"
+                Text="Romaneios"
                 TextColor="Black">
                 <Label.FontSize>
                     <OnIdiom
@@ -44,7 +44,7 @@
                             Keyboard="Numeric"
                             Placeholder="Busque por número"
                             SearchCommand="{Binding PesquisarCommand}"
-                            Text="{Binding TextoPesquisaOrdemProducao}">
+                            Text="{Binding TextoPesquisaRomaneio}">
                             <SearchBar.HeightRequest>
                                 <OnPlatform
                                     x:TypeArguments="x:Double"
@@ -71,7 +71,7 @@
                 HasUnevenRows="True"
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
-                ItemsSource="{Binding OrdensProducao}"
+                ItemsSource="{Binding Romaneios}"
                 SelectionMode="None"
                 SeparatorVisibility="None">
                 <ListView.ItemTemplate>
@@ -89,7 +89,7 @@
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Numero, StringFormat='OP {0}'}"
+                                                Text="{Binding Id, StringFormat='ID {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -99,78 +99,48 @@
                                                 </Label.FontSize>
                                             </Label>
                                         </StackLayout>
-
-                                        <Label Margin="15,4,0,0" Text="Produto">
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Data a carregar: " />
+                                                    <Span Text="{Binding DataCarregar, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
                                             <Label.FontSize>
                                                 <OnIdiom
-                                                    x:TypeArguments="x:Double"
-                                                    Phone="16.4"
-                                                    Tablet="20" />
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="16.4"
+                                                        Tablet="20" />
                                             </Label.FontSize>
                                         </Label>
-
-                                        <Label
-                                            Margin="30,5,5,0"
-                                            FontFamily="verdanab.ttf#verdana"
-                                            LineBreakMode="WordWrap"
-                                            LineHeight="1.2"
-                                            Text="{Binding DescricaoProduto}"
-                                            TextColor="Black">
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Data emissão: " />
+                                                    <Span Text="{Binding DataEmissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
                                             <Label.FontSize>
                                                 <OnIdiom
-                                                    x:TypeArguments="x:Double"
-                                                    Phone="17"
-                                                    Tablet="21" />
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="16.4"
+                                                        Tablet="20" />
                                             </Label.FontSize>
                                         </Label>
-
-                                        <StackLayout Margin="0,5,0,0">
-                                            <Label Margin="15,0,0,0">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Data: " />
-                                                        <Span Text="{Binding DataPrevisaoInicio, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                                <Label.FontSize>
-                                                    <OnIdiom
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Id veículo: " />
+                                                    <Span Text="{Binding IdVeiculo}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            <Label.FontSize>
+                                                <OnIdiom
                                                         x:TypeArguments="x:Double"
                                                         Phone="16.4"
                                                         Tablet="20" />
-                                                </Label.FontSize>
-                                            </Label>
-
-                                            <Label Margin="15,0,0,0">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Quantidade: " />
-                                                        <Span Text="{Binding Quantidade, StringFormat='{0:0.##}'}" TextColor="Black" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                                <Label.FontSize>
-                                                    <OnIdiom
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="16.4"
-                                                        Tablet="20" />
-                                                </Label.FontSize>
-                                            </Label>
-
-                                            <Label Margin="15,0,0,0">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="Área: " />
-                                                        <Span Text="{Binding AreaProducao}" TextColor="Black" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                                <Label.FontSize>
-                                                    <OnIdiom
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="16.4"
-                                                        Tablet="20" />
-                                                </Label.FontSize>
-                                            </Label>
-                                        </StackLayout>
-
+                                            </Label.FontSize>
+                                        </Label>
                                         <BoxView
                                             Margin="0,15,0,0"
                                             HeightRequest="1"
@@ -182,7 +152,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Orientation="Horizontal">
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding BindingContext.SepararCommand, Source={x:Reference pgListaOp}}" CommandParameter="{Binding .}" />
+                                                <TapGestureRecognizer Command="{Binding BindingContext.SepararCommand, Source={x:Reference pgListaRom}}" CommandParameter="{Binding .}" />
                                             </StackLayout.GestureRecognizers>
 
                                             <Label
