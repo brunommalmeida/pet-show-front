@@ -56,22 +56,25 @@ namespace pet_show_front.Business.ApiBusiness
             }
         }
 
-        public async Task<List<Romaneio>> GetItensRomaneiosAsync(string numeroRomaneio)
+        public async Task<List<ItemRomaneio>> GetItensRomaneiosAsync(string numeroRomaneio)
         {
             try
             {
-                using (CustomHttpClient client = new CustomHttpClient())
-                {
-                    List<Romaneio> romaneios = new List<Romaneio>();
-                    Romaneio romaneio = new Romaneio
+                //using (CustomHttpClient client = new CustomHttpClient())
+                //{
+                    List<ItemRomaneio> itensRomaneio = new List<ItemRomaneio>();
+                    ItemRomaneio itemRomaneio = new ItemRomaneio
                     {
-                        Id = 1,
-                        DataCarregar = DateTime.Now,
-                        DataEmissao = DateTime.Now,
-                        IdVeiculo = 1
+                        Sequencia = 1,
+                        CodigoProduto = "teste",
+                        Conferido = false,
+                        Lote = "lote teste",
+                        Produto = "SUA IRMÃ AQUELA LOKA",
+                        Quantidade = 100,
+                        QuantidadeCarregada = 0
                     };
-                    romaneios.Add(romaneio);
-                    return romaneios;
+                    itensRomaneio.Add(itemRomaneio);
+                    return itensRomaneio;
                     //var response = await client.GetAsync($"api/romaneios?romaneio={numeroRomaneio}");
 
                     //if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -93,7 +96,7 @@ namespace pet_show_front.Business.ApiBusiness
                     //    }
                     //}
 
-                }
+                //}
             }
             catch (Exception ex)
             {

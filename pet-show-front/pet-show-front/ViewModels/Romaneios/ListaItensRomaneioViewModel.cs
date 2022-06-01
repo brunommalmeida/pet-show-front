@@ -11,12 +11,12 @@ using Xamarin.Forms;
 
 namespace pet_show_front.ViewModels.Romaneios
 {
-    public class ListaRomaneiosViewModel : BaseViewModel
+    public class ListaItensRomaneioViewModel : BaseViewModel
     {
         public ICommand PesquisarCommand { get; private set; }
         public ICommand SepararCommand { get; private set; }
 
-        ObservableCollection<Romaneio> romaneios = null;
+        ObservableCollection<ItemRomaneio> itensRomaneio = null;
         string textoPesquisaRomaneio = "";
         public string TextoPesquisaRomaneio
         {
@@ -35,33 +35,31 @@ namespace pet_show_front.ViewModels.Romaneios
             }
         }
 
-        public ObservableCollection<Romaneio> Romaneios
+        public ObservableCollection<ItemRomaneio> ItensRomaneio
         {
             get
             {
-                return romaneios;
+                return itensRomaneio;
             }
             set
             {
-                romaneios = value;
+                itensRomaneio = value;
                 OnPropertyChanged();
             }
         }
 
-        public ListaRomaneiosViewModel()
+        public ListaItensRomaneioViewModel(Model.Romaneio romaneio)
         {
-            PesquisarCommand = new Command(FiltrarRomaneiosAsync);
-            SepararCommand = new Command<Romaneio>(SepararRomaneioAsync);
 
-            Task.Run(async () => await GetRomaneiosAsync());
+            Task.Run(async () => await GetItensRomaneioAsync(romaneio.Id));
         }
 
-        private async void FiltrarRomaneiosAsync()
+        public ListaItensRomaneioViewModel()
         {
-            await GetRomaneiosAsync();
+
         }
 
-        private async Task GetRomaneiosAsync()
+        private async Task GetItensRomaneioAsync(int idRomaneio)
         {
             try
             {
@@ -73,8 +71,8 @@ namespace pet_show_front.ViewModels.Romaneios
                 IsBusy = true;
 
                 RomaneiosApiBusiness romaneiosApiBusiness = new RomaneiosApiBusiness();
-                Romaneios = new
-                     ObservableCollection<Romaneio>(await romaneiosApiBusiness.GetRomaneiosAsync(textoPesquisaRomaneio));
+                ItensRomaneio = new
+                     ObservableCollection<ItemRomaneio>(await romaneiosApiBusiness.GetItensRomaneiosAsync(idRomaneio.ToString()));
             }
             catch (Exception ex)
             {
@@ -95,7 +93,10 @@ namespace pet_show_front.ViewModels.Romaneios
                 }
 
                 IsBusy = true;
-                await App.Current.MainPage.Navigation.PushAsync(new pgListaItensRomaneio(romaneio)); ;
+                //talvez possa usar a própria instância de romaneio para manipular a tela seguinte
+                RomaneiosApiBusiness romaneiosApiBusiness = new RomaneiosApiBusiness();
+                var itensRomaneio = await romaneiosApiBusiness.GetRomaneiosAsync(textoPesquisaRomaneio);
+                //await App.Current.MainPage.Navigation.PushAsync(new pgListaItensRomaneio());
                 App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
 
             }
@@ -107,6 +108,5 @@ namespace pet_show_front.ViewModels.Romaneios
 
             IsBusy = false;
         }
-
     }
 }
