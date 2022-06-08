@@ -130,8 +130,8 @@
                                         <Label Margin="15,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Id veículo: " />
-                                                    <Span Text="{Binding IdVeiculo}" TextColor="Black" />
+                                                    <Span Text="Placa veículo: " />
+                                                    <Span Text="{Binding PlacaVeiculo}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>

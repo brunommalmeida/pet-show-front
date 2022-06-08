@@ -14,7 +14,7 @@ namespace pet_show_front.ViewModels.Romaneios
     public class ListaItensRomaneioViewModel : BaseViewModel
     {
         public ICommand PesquisarCommand { get; private set; }
-        public ICommand SepararCommand { get; private set; }
+        public ICommand SepararItemRomaneioCommand { get; private set; }
 
         ObservableCollection<ItemRomaneio> itensRomaneio = null;
         string textoPesquisaRomaneio = "";
@@ -50,6 +50,7 @@ namespace pet_show_front.ViewModels.Romaneios
 
         public ListaItensRomaneioViewModel(Model.Romaneio romaneio)
         {
+            SepararItemRomaneioCommand = new Command<ItemRomaneio>(SepararItemRomaneioAsync);
 
             Task.Run(async () => await GetItensRomaneioAsync(romaneio.Id));
         }
@@ -83,7 +84,7 @@ namespace pet_show_front.ViewModels.Romaneios
             IsBusy = false;
         }
 
-        private async void SepararRomaneioAsync(Romaneio romaneio)
+        private async void SepararItemRomaneioAsync(ItemRomaneio itemRomaneio)
         {
             try
             {
@@ -94,10 +95,7 @@ namespace pet_show_front.ViewModels.Romaneios
 
                 IsBusy = true;
                 //talvez possa usar a própria instância de romaneio para manipular a tela seguinte
-                RomaneiosApiBusiness romaneiosApiBusiness = new RomaneiosApiBusiness();
-                var itensRomaneio = await romaneiosApiBusiness.GetRomaneiosAsync(textoPesquisaRomaneio);
-                //await App.Current.MainPage.Navigation.PushAsync(new pgListaItensRomaneio());
-                App.Current.MainPage.Navigation.RemovePage(App.Current.MainPage.Navigation.NavigationStack[App.Current.MainPage.Navigation.NavigationStack.Count - 2]);
+                await App.Current.MainPage.Navigation.PushAsync(new pgRomaneio(itemRomaneio));
 
             }
             catch (Exception ex)

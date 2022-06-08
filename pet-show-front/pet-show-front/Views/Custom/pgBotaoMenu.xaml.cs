@@ -47,7 +47,7 @@ namespace pet_show_front.Views.Custom
                 }
                 else if (Menu.Opcao == 2)
                 {
-                    await Navigation.PushAsync(new pgChecklists());
+                    await Navigation.PushAsync(new pgListaChecklists());
 
                 }
                 else if (Menu.Opcao == 99)

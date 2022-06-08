@@ -12,5 +12,6 @@ namespace pet_show_front.Model
         public DateTime DataEmissao { get; set; }
         public DateTime DataCarregar { get; set; }
         public int IdVeiculo { get; set; }
+        public string PlacaVeiculo { get; set; }
     }
 }

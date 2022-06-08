@@ -1,6 +1,6 @@
 ﻿using pet_show_front.Business.ApiBusiness;
 using pet_show_front.Model;
-using pet_show_front.Views.Romaneios;
+using pet_show_front.Views.Checklists;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace pet_show_front.ViewModels.Romaneios
+namespace pet_show_front.ViewModels.Checklists
 {
-    public class ListaRomaneiosViewModel : BaseViewModel
+    public class ListaChecklistsViewModel : BaseViewModel
     {
         public ICommand PesquisarCommand { get; private set; }
         public ICommand SepararCommand { get; private set; }
@@ -48,9 +48,10 @@ namespace pet_show_front.ViewModels.Romaneios
             }
         }
 
-        public ListaRomaneiosViewModel()
+        public ListaChecklistsViewModel()
         {
             PesquisarCommand = new Command(FiltrarRomaneiosAsync);
+
             SepararCommand = new Command<Romaneio>(SepararRomaneioAsync);
 
             Task.Run(async () => await GetRomaneiosAsync());
@@ -95,7 +96,7 @@ namespace pet_show_front.ViewModels.Romaneios
                 }
 
                 IsBusy = true;
-                await App.Current.MainPage.Navigation.PushAsync(new pgListaItensRomaneio(romaneio));
+                await App.Current.MainPage.Navigation.PushAsync(new pgChecklists(romaneio));
 
             }
             catch (Exception ex)
@@ -106,6 +107,5 @@ namespace pet_show_front.ViewModels.Romaneios
 
             IsBusy = false;
         }
-
     }
 }

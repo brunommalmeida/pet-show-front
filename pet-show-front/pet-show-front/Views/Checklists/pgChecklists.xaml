@@ -1,12 +1,149 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="pet_show_front.Views.Checklists.pgChecklists">
-    <ContentPage.Content>
+<custom:pgBasePage  
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:VM="clr-namespace:pet_show_front.ViewModels.Checklists" 
+    xmlns:converters="clr-namespace:pet_show_front.Converters"
+    x:Class="pet_show_front.Views.Checklists.pgChecklists"
+    x:Name="pgChecklist">
+    <ContentPage.BindingContext>
+        <VM:ChecklistViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label
+                HorizontalOptions="Start"
+                Text="Enviar checklist"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="22"
+                        Phone="18"
+                        Tablet="22" />
+                </Label.FontSize>
+            </Label>
         </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Frame
+            Margin="15,5,15,15"
+            BackgroundColor="White"
+            CornerRadius="4"
+            HasShadow="True"
+            VerticalOptions="FillAndExpand">
+            <Frame.Content>
+                <StackLayout>
+                    <Label Margin="0,12,0,0" Text="Placa veículo:">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblPlacaVeiculo"
+                        Text="{Binding Romaneio.PlacaVeiculo}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="20"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Romaneio">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblRomaneio"
+                        Margin="0,-6,0,0"
+                        HorizontalOptions="Start"
+                        IsEnabled="False"
+                        Text="{Binding Romaneio.Id}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Observações">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Editor
+                        x:Name="entObservacoes"
+                        Margin="0,-6,0,0"
+                        HeightRequest="100"
+                        HorizontalOptions="Start"
+                        WidthRequest="500"
+                        Text="{Binding Checklist.Observacoes}"
+                        TextColor="Black"
+                        VerticalOptions="Start">
+                    </Editor>
+                    <StackLayout
+                        Padding="20"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                        Orientation="Horizontal">
+                        <Label
+                            x:Name="lblCancelar"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="Start"
+                            Text="cancelar"
+                            TextColor="Red"
+                            VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="21"
+                                    Phone="18"
+                                    Tablet="21" />
+                            </Label.FontSize>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LimparCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <custom:CustomButton
+                            x:Name="btnEnviar"
+                            BackgroundColor="{StaticResource Verde}"
+                            Command="{Binding EnviarChecklistCommand}"
+                            CornerRadius="7"
+                            Text="enviar"
+                            TextColor="White">
+                            <custom:CustomButton.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="23"
+                                    Phone="19"
+                                    Tablet="23" />
+                            </custom:CustomButton.FontSize>
+                        </custom:CustomButton>
+                    </StackLayout>
+                </StackLayout>
+            </Frame.Content>
+        </Frame>
     </ContentPage.Content>
-</ContentPage>
+</custom:pgBasePage>

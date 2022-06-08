@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<custom:pgBasePage
-    x:Class="pet_show_front.Views.Romaneios.pgListaItensRomaneio"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<custom:pgBasePage  
+             xmlns:custom="clr-namespace:pet_show_front.Views.Custom" 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Checklists" 
     xmlns:converters="clr-namespace:pet_show_front.Converters"
-    xmlns:custom="clr-namespace:pet_show_front.Views.Custom"
-    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Romaneios"
-    x:Name="pgListaItensRom">
+    x:Class="pet_show_front.Views.Checklists.pgListaChecklists"
+    x:Name="pgListaCheck">
     <ContentPage.BindingContext>
-        <VM:ListaItensRomaneioViewModel x:Name="viewModel" />
+        <VM:ListaChecklistsViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -19,7 +19,7 @@
         <StackLayout>
             <Label
                 HorizontalOptions="Start"
-                Text="Itens do romaneio"
+                Text="Checklist Romaneios"
                 TextColor="Black">
                 <Label.FontSize>
                     <OnIdiom
@@ -32,6 +32,31 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
+            <Frame
+                Margin="20,10,20,0"
+                CornerRadius="7"
+                HasShadow="True">
+                <Frame.Content>
+                    <StackLayout>
+                        <SearchBar
+                            x:Name="pesquisaOrdens"
+                            Margin="-15,0,0,0"
+                            Keyboard="Numeric"
+                            Placeholder="Busque por número"
+                            SearchCommand="{Binding PesquisarCommand}"
+                            Text="{Binding TextoPesquisaRomaneio}">
+                            <SearchBar.HeightRequest>
+                                <OnPlatform
+                                    x:TypeArguments="x:Double"
+                                    Android="40.0"
+                                    WinPhone="40"
+                                    iOS="-1.0" />
+                            </SearchBar.HeightRequest>
+                        </SearchBar>
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+
             <ActivityIndicator
                 x:Name="loading"
                 HorizontalOptions="Center"
@@ -46,7 +71,7 @@
                 HasUnevenRows="True"
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
-                ItemsSource="{Binding ItensRomaneio}"
+                ItemsSource="{Binding Romaneios}"
                 SelectionMode="None"
                 SeparatorVisibility="None">
                 <ListView.ItemTemplate>
@@ -60,11 +85,11 @@
                                 HorizontalOptions="FillAndExpand">
                                 <Frame.Content>
                                     <StackLayout>
-                                        <StackLayout BackgroundColor="{StaticResource Azul }">
+                                        <StackLayout BackgroundColor="{StaticResource Azul}">
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Sequencia, StringFormat='SEQ {0}'}"
+                                                Text="{Binding Id, StringFormat='ID {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -77,8 +102,8 @@
                                         <Label Margin="15,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Código: " />
-                                                    <Span Text="{Binding CodigoProduto}" TextColor="Black" />
+                                                    <Span Text="Data a carregar: " />
+                                                    <Span Text="{Binding DataCarregar, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -91,8 +116,8 @@
                                         <Label Margin="15,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Produto: " />
-                                                    <Span Text="{Binding Produto}" TextColor="Black" />
+                                                    <Span Text="Data emissão: " />
+                                                    <Span Text="{Binding DataEmissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -105,36 +130,8 @@
                                         <Label Margin="15,0,0,0">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="Quantidade: " />
-                                                    <Span Text="{Binding Quantidade}" TextColor="Black" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                            <Label.FontSize>
-                                                <OnIdiom
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="16.4"
-                                                        Tablet="20" />
-                                            </Label.FontSize>
-                                        </Label>
-                                        <Label Margin="15,0,0,0">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Quantidade carregada " />
-                                                    <Span Text="{Binding QuantidadeCarregada}" TextColor="Black" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                            <Label.FontSize>
-                                                <OnIdiom
-                                                        x:TypeArguments="x:Double"
-                                                        Phone="16.4"
-                                                        Tablet="20" />
-                                            </Label.FontSize>
-                                        </Label>
-                                        <Label Margin="15,0,0,0">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="Lote: " />
-                                                    <Span Text="{Binding Lote}" TextColor="Black" />
+                                                    <Span Text="Placa veículo: " />
+                                                    <Span Text="{Binding PlacaVeiculo}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -155,13 +152,13 @@
                                             HorizontalOptions="FillAndExpand"
                                             Orientation="Horizontal">
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding BindingContext.SepararItemRomaneioCommand, Source={x:Reference pgListaItensRom}}" CommandParameter="{Binding .}" />
+                                                <TapGestureRecognizer Command="{Binding BindingContext.SepararCommand, Source={x:Reference pgListaCheck}}" CommandParameter="{Binding .}" />
                                             </StackLayout.GestureRecognizers>
 
                                             <Label
                                                 Margin="30,0,0,0"
                                                 HorizontalOptions="CenterAndExpand"
-                                                Text="Separar"
+                                                Text="Apontar"
                                                 TextColor="{StaticResource Azul}"
                                                 VerticalOptions="Center">
                                                 <Label.FontSize>

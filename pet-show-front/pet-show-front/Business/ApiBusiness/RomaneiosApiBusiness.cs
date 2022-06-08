@@ -23,7 +23,8 @@ namespace pet_show_front.Business.ApiBusiness
                     Id = 1,
                     DataCarregar = DateTime.Now,
                     DataEmissao = DateTime.Now,
-                    IdVeiculo = 1
+                    IdVeiculo = 1,
+                    PlacaVeiculo = "TST-2332"
                 };
                 romaneios.Add(romaneio);
                 return romaneios;

@@ -7,6 +7,7 @@ namespace pet_show_front.Model
     public class ItemRomaneio
     {
         public int Sequencia { get; set; }
+        public int IdRomaneio { get; set; }
         public string CodigoProduto { get; set; } 
         public string Produto { get; set; }
         public double Quantidade { get; set; }
