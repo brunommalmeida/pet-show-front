@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:pgBasePage  
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Devolucoes" 
+    xmlns:converters="clr-namespace:pet_show_front.Converters"
+    x:Class="pet_show_front.Views.Devolucoes.pgDevolucao"
+    x:Name="pgDev">
+    <ContentPage.BindingContext>
+        <VM:DevolucaoViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label
+                HorizontalOptions="Start"
+                Text="Enviar devolução"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Desktop="22"
+                        Phone="18"
+                        Tablet="22" />
+                </Label.FontSize>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Frame
+            Margin="15,5,15,15"
+            BackgroundColor="White"
+            CornerRadius="4"
+            HasShadow="True"
+            VerticalOptions="FillAndExpand">
+            <Frame.Content>
+                <StackLayout>
+                    <Label Margin="0,12,0,0" Text="Item NF">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblSequencia"
+                        Text="{Binding ItemNotaFiscal.Item}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="20"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Cód. Produto:">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblCodProduto"
+                        Margin="0,-6,0,0"
+                        HorizontalOptions="Start"
+                        IsEnabled="False"
+                        Text="{Binding ItemNotaFiscal.CodigoProduto}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Desc Produto">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblDescProduto"
+                        Margin="0,-6,0,0"
+                        HorizontalOptions="Start"
+                        IsEnabled="False"
+                        Text="{Binding ItemNotaFiscal.Produto}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Quantidade NF:">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label
+                        x:Name="lblQuantidadeNf"
+                        Margin="0,-6,0,0"
+                        HorizontalOptions="Start"
+                        IsEnabled="False"
+                        Text="{Binding ItemNotaFiscal.Quantidade}"
+                        TextColor="Black">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Label Margin="0,12,0,0" Text="Qtd a devolver">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Entry
+                        x:Name="txtDevolver"
+                        Margin="0,-6,0,0"
+                        HorizontalOptions="Start"
+                        IsEnabled="True"
+                        TextColor="Black"
+                        WidthRequest="80">
+                    </Entry>
+                    <StackLayout
+                        Padding="20"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                        Orientation="Horizontal">
+                        <Label
+                            x:Name="lblCancelar"
+                            Margin="0,0,10,0"
+                            HorizontalOptions="Start"
+                            Text="cancelar"
+                            TextColor="Red"
+                            VerticalOptions="Center">
+                            <Label.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="21"
+                                    Phone="18"
+                                    Tablet="21" />
+                            </Label.FontSize>
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LimparCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <custom:CustomButton
+                            x:Name="btnEnviar"
+                            BackgroundColor="{StaticResource Verde}"
+                            Command="{Binding EnviarRomaneioCommand}"
+                            CornerRadius="7"
+                            Text="enviar"
+                            TextColor="White">
+                            <custom:CustomButton.FontSize>
+                                <OnIdiom
+                                    x:TypeArguments="x:Double"
+                                    Desktop="23"
+                                    Phone="19"
+                                    Tablet="23" />
+                            </custom:CustomButton.FontSize>
+                        </custom:CustomButton>
+                    </StackLayout>
+                </StackLayout>
+            </Frame.Content>
+        </Frame>
+    </ContentPage.Content>
+</custom:pgBasePage>

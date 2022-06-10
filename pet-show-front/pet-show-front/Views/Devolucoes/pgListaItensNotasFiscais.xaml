@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<custom:pgBasePage
+    x:Class="pet_show_front.Views.Devolucoes.pgListaItensNotasFiscais"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:pet_show_front.Converters"
+    xmlns:custom="clr-namespace:pet_show_front.Views.Custom"
+    xmlns:VM="clr-namespace:pet_show_front.ViewModels.Devolucoes"
+    x:Name="pgListaItensNf">
+    <ContentPage.BindingContext>
+        <VM:ListaItensNotasFiscaisViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBoolConverter x:Key="inverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label
+                HorizontalOptions="Start"
+                Text="Itens Nota Fiscal"
+                TextColor="Black">
+                <Label.FontSize>
+                    <OnIdiom
+                        x:TypeArguments="x:Double"
+                        Phone="19"
+                        Tablet="22" />
+                </Label.FontSize>
+            </Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator
+                x:Name="loading"
+                HorizontalOptions="Center"
+                IsEnabled="True"
+                IsRunning="True"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+
+            <ListView
+                x:Name="listaOrdens"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy, Converter={StaticResource inverseBoolConverter}}"
+                ItemsSource="{Binding ItensNotaFiscal}"
+                SelectionMode="None"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="20,10,20,5"
+                                Padding="0"
+                                CornerRadius="7"
+                                HasShadow="True"
+                                HorizontalOptions="FillAndExpand">
+                                <Frame.Content>
+                                    <StackLayout>
+                                        <StackLayout BackgroundColor="{StaticResource Azul }">
+                                            <Label
+                                                Margin="0,2,5,2"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Item, StringFormat='ITEM {0}'}"
+                                                TextColor="White">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="17"
+                                                        Tablet="21" />
+                                                </Label.FontSize>
+                                            </Label>
+                                        </StackLayout>
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Nº NF: " />
+                                                    <Span Text="{Binding IdNotaFiscal}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            <Label.FontSize>
+                                                <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="16.4"
+                                                        Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Código: " />
+                                                    <Span Text="{Binding CodigoProduto}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            <Label.FontSize>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="16.4"
+                                                    Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Produto: " />
+                                                    <Span Text="{Binding Produto}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            <Label.FontSize>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="16.4"
+                                                    Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        <Label Margin="15,0,0,0">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Quantidade NF: " />
+                                                    <Span Text="{Binding Quantidade}" TextColor="Black" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                            <Label.FontSize>
+                                                <OnIdiom
+                                                    x:TypeArguments="x:Double"
+                                                    Phone="16.4"
+                                                    Tablet="20" />
+                                            </Label.FontSize>
+                                        </Label>
+                                        
+                                        <BoxView
+                                            Margin="0,15,0,0"
+                                            HeightRequest="1"
+                                            HorizontalOptions="FillAndExpand"
+                                            Color="{StaticResource backgroundColorGray}" />
+
+                                        <StackLayout
+                                            Margin="0,0,0,5"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal">
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding BindingContext.DevolverItemCommand, Source={x:Reference pgListaItensNf}}" CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+
+                                            <Label
+                                                Margin="30,0,0,0"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="Devolver"
+                                                TextColor="{StaticResource Azul}"
+                                                VerticalOptions="Center">
+                                                <Label.FontSize>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="16.5"
+                                                        Tablet="19" />
+                                                </Label.FontSize>
+                                            </Label>
+                                            <Image
+                                                Margin="0,0,15,0"
+                                                Aspect="AspectFit"
+                                                Source="blueNext.png"
+                                                VerticalOptions="Center">
+                                                <Image.HeightRequest>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15"
+                                                        Tablet="25" />
+                                                </Image.HeightRequest>
+                                                <Image.WidthRequest>
+                                                    <OnIdiom
+                                                        x:TypeArguments="x:Double"
+                                                        Phone="15"
+                                                        Tablet="25" />
+                                                </Image.WidthRequest>
+                                            </Image>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame.Content>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</custom:pgBasePage>

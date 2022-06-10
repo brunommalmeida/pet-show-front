@@ -1,6 +1,7 @@
 ﻿using pet_show_front.Business.AppBusiness;
 using pet_show_front.Models.MainModels;
 using pet_show_front.Views.Checklists;
+using pet_show_front.Views.Devolucoes;
 using pet_show_front.Views.MainViews;
 using pet_show_front.Views.Romaneios;
 using System;
@@ -49,6 +50,10 @@ namespace pet_show_front.Views.Custom
                 {
                     await Navigation.PushAsync(new pgListaChecklists());
 
+                }
+                else if(Menu.Opcao == 3)
+                {
+                    await Navigation.PushAsync(new pgListaNotasFiscais());
                 }
                 else if (Menu.Opcao == 99)
                 {

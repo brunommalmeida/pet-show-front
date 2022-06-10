@@ -92,6 +92,13 @@ namespace pet_show_front.Views.MainViews
 
                 stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
                 {
+                    Opcao = 3,
+                    Descricao = "Devoluções",
+                    Icone = "exchange.png",
+                    IdFuncao = 1
+                }));
+                stkMenu.Children.Add(new pgBotaoMenu(new MenuApp()
+                {
                     Opcao = 99,
                     Descricao = "Configurações",
                     Icone = "setting.png"

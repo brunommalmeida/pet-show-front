@@ -68,4 +68,16 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Devolucoes\pgListaItensNotasFiscais.xaml.cs">
+      <DependentUpon>pgListaItensNotasFiscais.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Devolucoes\pgListaNotasFiscais.xaml.cs">
+      <DependentUpon>pgListaNotasFiscais.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Devolucoes\pgDevolucao.xaml.cs">
+      <DependentUpon>pgDevolucao.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>
