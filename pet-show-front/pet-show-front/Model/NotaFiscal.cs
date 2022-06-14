@@ -6,8 +6,9 @@ namespace pet_show_front.Model
 {
     public class NotaFiscal
     {
-        public string Numero { get; set; }
-        public DateTime DataEmissao { get; set; }
-        public int IdRomaneio { get; set; }
+        public string numero { get; set; }
+        public DateTime dataemissao { get; set; }
+        public int codromaneio { get; set; }
     }
+
 }

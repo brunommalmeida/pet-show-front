@@ -7,11 +7,12 @@ namespace pet_show_front.Model
 {
     public class Romaneio
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        public DateTime DataEmissao { get; set; }
-        public DateTime DataCarregar { get; set; }
-        public int IdVeiculo { get; set; }
-        public string PlacaVeiculo { get; set; }
+        public int codromaneio { get; set; }
+        public DateTime dataemissao { get; set; }
+        public DateTime datacarregar { get; set; }
+        public int idveiculo { get; set; }
+        public string placa { get; set; }
+        public string modelo { get; set; }
     }
+
 }

@@ -52,7 +52,7 @@ namespace pet_show_front.ViewModels.Romaneios
         {
             SepararItemRomaneioCommand = new Command<ItemRomaneio>(SepararItemRomaneioAsync);
 
-            Task.Run(async () => await GetItensRomaneioAsync(romaneio.Id));
+            Task.Run(async () => await GetItensRomaneioAsync(romaneio.codromaneio));
         }
 
         public ListaItensRomaneioViewModel()
@@ -94,7 +94,6 @@ namespace pet_show_front.ViewModels.Romaneios
                 }
 
                 IsBusy = true;
-                //talvez possa usar a própria instância de romaneio para manipular a tela seguinte
                 await App.Current.MainPage.Navigation.PushAsync(new pgRomaneio(itemRomaneio));
 
             }

@@ -89,7 +89,7 @@
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Numero, StringFormat='NF {0}'}"
+                                                Text="{Binding numero, StringFormat='NF {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -103,7 +103,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="ID Romaneio: " />
-                                                    <Span Text="{Binding IdRomaneio}" TextColor="Black" />
+                                                    <Span Text="{Binding codromaneio}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -117,7 +117,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Data emissão: " />
-                                                    <Span Text="{Binding DataEmissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                                                    <Span Text="{Binding dataemissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>

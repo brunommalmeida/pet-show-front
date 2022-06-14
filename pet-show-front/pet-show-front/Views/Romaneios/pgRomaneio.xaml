@@ -49,7 +49,7 @@
                     </Label>
                     <Label
                         x:Name="lblSequencia"
-                        Text="{Binding ItemRomaneio.Sequencia}"
+                        Text="{Binding ItemRomaneio.sequencia}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -73,7 +73,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemRomaneio.CodigoProduto}"
+                        Text="{Binding ItemRomaneio.codproduto}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -97,7 +97,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemRomaneio.Produto}"
+                        Text="{Binding ItemRomaneio.descricao}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -121,7 +121,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemRomaneio.QuantidadeCarregada}"
+                        Text="{Binding ItemRomaneio.quantidadecarregada}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -145,7 +145,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="True"
-                        Text="{Binding ItemRomaneio.Quantidade}"
+                        Text="{Binding ItemRomaneio.quantidade}"
                         TextColor="Black">
                     </Entry>
                     <Label Margin="0,12,0,0" Text="Lote">
@@ -157,14 +157,15 @@
                                 Tablet="23" />
                         </Label.FontSize>
                     </Label>
-                    <Entry
+                    <Editor
                         x:Name="txtLote"
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
+                        WidthRequest="100"
                         IsEnabled="True"
-                        Text="{Binding ItemRomaneio.Lote}"
+                        Text="{Binding ItemRomaneio.lote}"
                         TextColor="Black">
-                    </Entry>
+                    </Editor>
                     <StackLayout
                         Padding="20"
                         HorizontalOptions="End"

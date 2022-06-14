@@ -89,7 +89,7 @@
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Id, StringFormat='ID {0}'}"
+                                                Text="{Binding codromaneio, StringFormat='ID {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -103,7 +103,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Data a carregar: " />
-                                                    <Span Text="{Binding DataCarregar, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                                                    <Span Text="{Binding datacarregar, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -117,7 +117,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Data emissão: " />
-                                                    <Span Text="{Binding DataEmissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
+                                                    <Span Text="{Binding dataemissao, StringFormat='{0:dd/MM/yyyy}'}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -131,7 +131,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Placa veículo: " />
-                                                    <Span Text="{Binding PlacaVeiculo}" TextColor="Black" />
+                                                    <Span Text="{Binding placa}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>

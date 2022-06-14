@@ -54,7 +54,7 @@ namespace pet_show_front.ViewModels.Devolucoes
         {
             DevolverItemCommand = new Command<ItemNotaFiscal>(SepararItemNotaFiscalAsync);
 
-            Task.Run(async () => await GetItensNotaFiscalAsync(notaFiscal.Numero));
+            Task.Run(async () => await GetItensNotaFiscalAsync(notaFiscal.numero));
         }
 
         public ListaItensNotasFiscaisViewModel()

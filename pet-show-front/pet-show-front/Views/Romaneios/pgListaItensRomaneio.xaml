@@ -64,7 +64,7 @@
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding Sequencia, StringFormat='SEQ {0}'}"
+                                                Text="{Binding sequencia, StringFormat='SEQ {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -78,7 +78,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Código: " />
-                                                    <Span Text="{Binding CodigoProduto}" TextColor="Black" />
+                                                    <Span Text="{Binding codproduto}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -92,7 +92,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Produto: " />
-                                                    <Span Text="{Binding Produto}" TextColor="Black" />
+                                                    <Span Text="{Binding descricao}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -106,7 +106,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Quantidade: " />
-                                                    <Span Text="{Binding Quantidade}" TextColor="Black" />
+                                                    <Span Text="{Binding quantidade}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -120,7 +120,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Quantidade carregada " />
-                                                    <Span Text="{Binding QuantidadeCarregada}" TextColor="Black" />
+                                                    <Span Text="{Binding quantidadecarregada}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -134,7 +134,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Lote: " />
-                                                    <Span Text="{Binding Lote}" TextColor="Black" />
+                                                    <Span Text="{Binding lote}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>

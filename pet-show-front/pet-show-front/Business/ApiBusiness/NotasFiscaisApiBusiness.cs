@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using pet_show_front.Custom;
 using pet_show_front.Model;
+using pet_show_front.Model.MainModels;
 using pet_show_front.Models.MainModels;
 using System;
 using System.Collections.Generic;
@@ -16,39 +17,30 @@ namespace pet_show_front.Business.ApiBusiness
         {
             try
             {
-                //using (HttpClient client = new HttpClient())
-                //{
-                //    client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);                   
-                //    var response = await client.GetAsync($"api/romaneios?romaneio={numeroNotaFiscal}");
-                //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                //    {
-                //        var romaneios = JsonConvert.DeserializeObject<List<NotaFiscal>>(await response.Content.ReadAsStringAsync());
-                //        return romaneios;
-                //    }
-                //    else
-                //    {
-                //        var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
-
-                //        if (erro != null && !string.IsNullOrEmpty(erro.Message))
-                //        {
-                //            throw new Exception($"Erro ao buscar romaneio: Mensagem: {erro.Message}  Trace:{erro.Trace}");
-                //        }
-                //        else
-                //        {
-                //            throw new Exception($"Erro ao buscar romaneio: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
-                //        }
-                //    }
-
-                //}
-                List<NotaFiscal> notasFiscais = new List<NotaFiscal>();
-                NotaFiscal notaFiscal = new NotaFiscal
+                using (HttpClient client = new HttpClient())
                 {
-                    Numero = "ASDASD",
-                    DataEmissao = DateTime.Now,
-                    IdRomaneio = 1
-                };
-                notasFiscais.Add(notaFiscal);
-                return notasFiscais;
+                    client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);
+                    client.Timeout = TimeSpan.FromSeconds(120);
+                    var response = await client.GetAsync($"/api/v1/notasFiscais");
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var retorno = JsonConvert.DeserializeObject<ReceiveApi<List<NotaFiscal>>>(await response.Content.ReadAsStringAsync());
+                        return retorno.value;
+                    }
+                    else
+                    {
+                        var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
+
+                        if (erro != null && !string.IsNullOrEmpty(erro.message))
+                        {
+                            throw new Exception($"Erro ao buscar romaneio: Mensagem: {erro.message}");
+                        }
+                        else
+                        {
+                            throw new Exception($"Erro ao buscar romaneio: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -56,45 +48,46 @@ namespace pet_show_front.Business.ApiBusiness
             }
         }
 
-        public async Task<List<ItemNotaFiscal>> GetItensNotaFiscalAsync(string numeroRomaneio)
+        public async Task<List<ItemNotaFiscal>> GetItensNotaFiscalAsync(string numeroNf)
         {
             try
             {
-                //using (CustomHttpClient client = new CustomHttpClient())
-                //{
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);
+                    var response = await client.GetAsync($"/api/v1/itensNotaFiscal?numero={numeroNf}");
+                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                    {
+                        var retorno = JsonConvert.DeserializeObject<ReceiveApi<List<ItemNotaFiscal>>>(await response.Content.ReadAsStringAsync());
+                        return retorno.value;
+                    }
+                    else
+                    {
+                        var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
+
+                        if (erro != null && !string.IsNullOrEmpty(erro.message))
+                        {
+                            throw new Exception($"Erro ao buscar romaneio: Mensagem: {erro.message}");
+                        }
+                        else
+                        {
+                            throw new Exception($"Erro ao buscar romaneio: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
+                        }
+                    }
+
+                }
                 List<ItemNotaFiscal> itensNotaFiscal = new List<ItemNotaFiscal>();
                 ItemNotaFiscal itemNotaFiscal = new ItemNotaFiscal
                 {
-                    Item = "0001",
-                    CodigoProduto = "CÓDIGO TESTE",
-                    Produto = "TESTEE",
-                    Quantidade = 10,
-                    IdNotaFiscal = "01"               
+                    item = "0001",
+                    codigoproduto = "CÓDIGO TESTE",
+                    produto = "TESTEE",
+                    quantidade = 10,
+                    idnotafiscal = "01"
                 };
                 itensNotaFiscal.Add(itemNotaFiscal);
                 return itensNotaFiscal;
-                //var response = await client.GetAsync($"api/romaneios?romaneio={numeroRomaneio}");
-
-                //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                //{
-                //    var empenhos = JsonConvert.DeserializeObject<List<Romaneio>>(await response.Content.ReadAsStringAsync());
-                //    return empenhos;
-                //}
-                //else
-                //{
-                //    var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
-
-                //    if (erro != null && !string.IsNullOrEmpty(erro.Message))
-                //    {
-                //        throw new Exception($"Erro ao buscar ordem de produção: Mensagem: {erro.Message}  Trace:{erro.Trace}");
-                //    }
-                //    else
-                //    {
-                //        throw new Exception($"Erro ao buscar ordem de produção: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
-                //    }
-                //}
-
-                //}
+                
             }
             catch (Exception ex)
             {

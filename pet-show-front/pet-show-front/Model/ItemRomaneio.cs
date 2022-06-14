@@ -6,14 +6,16 @@ namespace pet_show_front.Model
 {
     public class ItemRomaneio
     {
-        public int Sequencia { get; set; }
-        public int IdRomaneio { get; set; }
-        public string CodigoProduto { get; set; } 
-        public string Produto { get; set; }
-        public double Quantidade { get; set; }
-        public double QuantidadeCarregada { get; set; }
-        public string Lote { get; set; }
-        public bool Conferido { get; set; }
+        public int iditemnotafiscal { get; set; }
+        public int idnotafiscal { get; set; }
+        public int sequencia { get; set; }
+        public int codromaneio { get; set; }
+        public string codproduto { get; set; } 
+        public string descricao { get; set; }
+        public double quantidade { get; set; }
+        public double quantidadecarregada { get; set; }
+        public string lote { get; set; }
+        public bool conferido { get; set; }
 
     }
 }

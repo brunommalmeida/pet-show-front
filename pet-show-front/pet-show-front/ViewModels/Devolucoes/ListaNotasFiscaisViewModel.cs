@@ -101,7 +101,6 @@ namespace pet_show_front.ViewModels.Devolucoes
             }
             catch (Exception ex)
             {
-                App.ConexaoSqlite.Rollback();
                 await App.Current.MainPage.DisplayAlert("Erro", ex.Message, "Ok");
             }
 

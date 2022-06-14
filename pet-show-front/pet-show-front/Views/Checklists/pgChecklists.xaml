@@ -50,7 +50,7 @@
                     </Label>
                     <Label
                         x:Name="lblPlacaVeiculo"
-                        Text="{Binding Romaneio.PlacaVeiculo}"
+                        Text="{Binding Romaneio.placa}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -74,7 +74,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding Romaneio.Id}"
+                        Text="{Binding Romaneio.codromaneio}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -99,7 +99,7 @@
                         HeightRequest="100"
                         HorizontalOptions="Start"
                         WidthRequest="500"
-                        Text="{Binding Checklist.Observacoes}"
+                        Text="{Binding Checklist.observacoes}"
                         TextColor="Black"
                         VerticalOptions="Start">
                     </Editor>

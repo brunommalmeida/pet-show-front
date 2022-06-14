@@ -51,7 +51,7 @@
                     </Label>
                     <Label
                         x:Name="lblSequencia"
-                        Text="{Binding ItemNotaFiscal.Item}"
+                        Text="{Binding ItemNotaFiscal.item}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -75,7 +75,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemNotaFiscal.CodigoProduto}"
+                        Text="{Binding ItemNotaFiscal.codigoproduto}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -99,7 +99,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemNotaFiscal.Produto}"
+                        Text="{Binding ItemNotaFiscal.produto}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -123,7 +123,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemNotaFiscal.Quantidade}"
+                        Text="{Binding ItemNotaFiscal.quantidade}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
