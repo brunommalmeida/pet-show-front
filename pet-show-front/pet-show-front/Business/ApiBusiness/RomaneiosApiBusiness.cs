@@ -69,7 +69,7 @@ namespace pet_show_front.Business.ApiBusiness
                 {
                     client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);
                     client.Timeout = TimeSpan.FromSeconds(120);
-                    var response = await client.GetAsync($"/api/v1/itensRomaneio?codRomaneio={codRomaneio}");
+                    var response = await client.GetAsync($"/api/v1/itensRomaneio?codromaneio={codRomaneio}");
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         var retorno = JsonConvert.DeserializeObject<ReceiveApi<List<ItemRomaneio>>>(await response.Content.ReadAsStringAsync());
@@ -104,6 +104,30 @@ namespace pet_show_front.Business.ApiBusiness
                 client.Timeout = TimeSpan.FromSeconds(120);
                 var response = await client.PutAsync($"/api/v1/enviaRomaneio", itemRomaneio.GetStringContentSerialized());
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
+
+                    if (erro != null && !string.IsNullOrEmpty(erro.message))
+                    {
+                        throw new Exception($"Erro ao buscar romaneio: Mensagem: {erro.message}");
+                    }
+                    else
+                    {
+                        throw new Exception($"Erro ao buscar romaneio: Código: {response.StatusCode} Mensagem: {response.ReasonPhrase}");
+                    }
+                }
+
+            }
+        }
+
+        public async Task EnviarChecklistAsync(Checklist checklist)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);
+                client.Timeout = TimeSpan.FromSeconds(120);
+                var response = await client.PostAsync($"/api/v1/checklist", checklist.GetStringContentSerialized());
+                if (response.StatusCode != System.Net.HttpStatusCode.Created)
                 {
                     var erro = JsonConvert.DeserializeObject<ErrorDetails>(await response.Content.ReadAsStringAsync());
 

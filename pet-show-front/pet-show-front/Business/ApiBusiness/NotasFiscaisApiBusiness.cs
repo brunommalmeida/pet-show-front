@@ -48,6 +48,22 @@ namespace pet_show_front.Business.ApiBusiness
             }
         }
 
+        public async Task EnviarDevolucaoAsync(ItemNotaFiscal itemNotaFiscal)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(App.Configuracao.EnderecoApi);
+                client.Timeout = TimeSpan.FromSeconds(120);
+                var response = await client.PostAsync($"/api/v1/devolucao", itemNotaFiscal.GetStringContentSerialized());
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    var erro = JsonConvert.DeserializeObject(await response.Content.ReadAsStringAsync());
+
+                }
+
+            }
+        }
+
         public async Task<List<ItemNotaFiscal>> GetItensNotaFiscalAsync(string numeroNf)
         {
             try
@@ -75,19 +91,7 @@ namespace pet_show_front.Business.ApiBusiness
                         }
                     }
 
-                }
-                List<ItemNotaFiscal> itensNotaFiscal = new List<ItemNotaFiscal>();
-                ItemNotaFiscal itemNotaFiscal = new ItemNotaFiscal
-                {
-                    item = "0001",
-                    codigoproduto = "CÓDIGO TESTE",
-                    produto = "TESTEE",
-                    quantidade = 10,
-                    idnotafiscal = "01"
-                };
-                itensNotaFiscal.Add(itemNotaFiscal);
-                return itensNotaFiscal;
-                
+                }                
             }
             catch (Exception ex)
             {

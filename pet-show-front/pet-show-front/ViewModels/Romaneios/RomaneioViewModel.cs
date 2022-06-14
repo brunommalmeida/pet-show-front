@@ -34,9 +34,23 @@ namespace pet_show_front.ViewModels.Romaneios
 
                 IsBusy = true;
 
+                if (string.IsNullOrEmpty(ItemRomaneio.lote))
+                {
+                    await App.Current.MainPage.DisplayAlert("Atenção", "Preencha o campo lote", "Ok");
+                    IsBusy = false;
+                    return;
+                }
+                if(ItemRomaneio.quantidade == 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("Atenção", "Quantidade deve ser maior que 0", "Ok");
+                    IsBusy = false;
+                    return;
+                }
                 RomaneiosApiBusiness romaneiosApiBusiness = new RomaneiosApiBusiness();
                 await romaneiosApiBusiness.EnviarRomaneioAsync(ItemRomaneio);
+                IsBusy = false;
                 await App.Current.MainPage.Navigation.PopAsync();
+
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
-﻿using pet_show_front.Model;
+﻿using pet_show_front.Business.ApiBusiness;
+using pet_show_front.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -26,6 +27,30 @@ namespace pet_show_front.ViewModels.Devolucoes
         {
             try
             {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                IsBusy = true;
+                if(ItemNotaFiscal.quantidadedevolvida == 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("Atenção", "A quantidade a ser devolvida deve ser maior que 0", "Ok");
+                    IsBusy = false;
+                    return;
+                }
+                if(string.IsNullOrEmpty(ItemNotaFiscal.motivo))
+                {
+                    await App.Current.MainPage.DisplayAlert("Atenção", "O motivo é um campo obrigatório", "Ok");
+                    IsBusy = false;
+                    return;
+                }
+
+                NotasFiscaisApiBusiness notasFiscaisApiBusiness = new NotasFiscaisApiBusiness();
+                await notasFiscaisApiBusiness.EnviarDevolucaoAsync(ItemNotaFiscal);
+                await App.Current.MainPage.DisplayAlert("Sucesso", "Devolução enviada com sucesso", "ok");
+                IsBusy = false;
+                await App.Current.MainPage.Navigation.PopAsync();
 
             }
             catch (Exception ex)

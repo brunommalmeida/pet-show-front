@@ -92,9 +92,17 @@ namespace pet_show_front.ViewModels.Romaneios
                 {
                     return;
                 }
+                
+                if(itemRomaneio.quantidadecarregada == itemRomaneio.quantidade)
+                {
+                    await App.Current.MainPage.DisplayAlert("Atenção", "Esse item foi totalmente carregado", "Ok");
+                    IsBusy = false;
+                    return;
+                }
 
                 IsBusy = true;
                 await App.Current.MainPage.Navigation.PushAsync(new pgRomaneio(itemRomaneio));
+                IsBusy = false;
 
             }
             catch (Exception ex)

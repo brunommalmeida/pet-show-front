@@ -64,7 +64,7 @@
                                             <Label
                                                 Margin="0,2,5,2"
                                                 HorizontalOptions="Center"
-                                                Text="{Binding item, StringFormat='ITEM {0}'}"
+                                                Text="{Binding numeroitem, StringFormat='ITEM {0}'}"
                                                 TextColor="White">
                                                 <Label.FontSize>
                                                     <OnIdiom
@@ -78,7 +78,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Nº NF: " />
-                                                    <Span Text="{Binding idnotafiscal}" TextColor="Black" />
+                                                    <Span Text="{Binding numero}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -92,7 +92,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Código: " />
-                                                    <Span Text="{Binding codigoproduto}" TextColor="Black" />
+                                                    <Span Text="{Binding codproduto}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>
@@ -106,7 +106,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="Produto: " />
-                                                    <Span Text="{Binding produto}" TextColor="Black" />
+                                                    <Span Text="{Binding descricao}" TextColor="Black" />
                                                 </FormattedString>
                                             </Label.FormattedText>
                                             <Label.FontSize>

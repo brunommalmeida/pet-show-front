@@ -51,7 +51,7 @@
                     </Label>
                     <Label
                         x:Name="lblSequencia"
-                        Text="{Binding ItemNotaFiscal.item}"
+                        Text="{Binding ItemNotaFiscal.numeroitem}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -75,7 +75,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemNotaFiscal.codigoproduto}"
+                        Text="{Binding ItemNotaFiscal.codproduto}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -99,7 +99,7 @@
                         Margin="0,-6,0,0"
                         HorizontalOptions="Start"
                         IsEnabled="False"
-                        Text="{Binding ItemNotaFiscal.produto}"
+                        Text="{Binding ItemNotaFiscal.descricao}"
                         TextColor="Black">
                         <Label.FontSize>
                             <OnIdiom
@@ -142,14 +142,33 @@
                                 Tablet="23" />
                         </Label.FontSize>
                     </Label>
-                    <Entry
+                    <Editor
                         x:Name="txtDevolver"
                         Margin="0,-6,0,0"
-                        HorizontalOptions="Start"
+                        Text="{Binding ItemNotaFiscal.quantidadedevolvida}"
+                        HorizontalOptions="Start"                       
                         IsEnabled="True"
                         TextColor="Black"
                         WidthRequest="80">
-                    </Entry>
+                    </Editor>
+                    <Label Margin="0,12,0,0" Text="Motivo:">
+                        <Label.FontSize>
+                            <OnIdiom
+                                x:TypeArguments="x:Double"
+                                Desktop="23"
+                                Phone="17"
+                                Tablet="23" />
+                        </Label.FontSize>
+                    </Label>
+                    <Editor
+                        x:Name="txtMotivo"
+                        Margin="0,-6,0,0"
+                        Text="{Binding ItemNotaFiscal.motivo}"
+                        HorizontalOptions="Start"                       
+                        IsEnabled="True"
+                        TextColor="Black"
+                        WidthRequest="200">
+                    </Editor>
                     <StackLayout
                         Padding="20"
                         HorizontalOptions="End"

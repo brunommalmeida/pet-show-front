@@ -6,8 +6,7 @@ namespace pet_show_front.Model
 {
     public class Checklist
     {
-        public string placa{ get; set; }
         public string observacoes { get; set; }
-        public int codRomaneio { get; set; }
+        public int codromaneio { get; set; }
     }
 }
